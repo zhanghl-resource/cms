@@ -5,4 +5,5 @@ import com.briup.cms.bean.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ICatagorydao extends JpaRepository<Catagory, Integer> {
+    Catagory queryById(int id);
 }
