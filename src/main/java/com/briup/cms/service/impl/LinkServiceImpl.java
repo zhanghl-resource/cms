@@ -20,7 +20,7 @@ public class LinkServiceImpl implements ILinkService {
         if(link == null){
             throw new CustomerException(CodeUtil.Bad_CODE,"参数为空");
         }
-        linkdao.save(link);
+
     }
 
     @Override

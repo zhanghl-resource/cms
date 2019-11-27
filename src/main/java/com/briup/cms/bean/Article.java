@@ -1,19 +1,55 @@
 package com.briup.cms.bean;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "cms_article")
+@ApiModel
 public class Article implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @ApiModelProperty(value = "信息id")
     private int id;
+
+    @ApiModelProperty(value = "信息作者",required = true)
     private String author;
+
+    @ApiModelProperty(value = "点击次数",hidden = true)
+    private int clickTimes;
+
+    @ApiModelProperty(value = "信息内容",required = true)
     private String content;
+
+    @ApiModelProperty(value = "发布时间",hidden = true)
     private Date publishDate;
+
+    @ApiModelProperty(value = "信息标题",required = true)
     private String title;
+
+    public int getClickTimes() {
+        return clickTimes;
+    }
+
+    public void setClickTimes(int clickTimes) {
+        this.clickTimes = clickTimes;
+    }
+
+    public void setCatagory(Catagory catagory) {
+        this.catagory = catagory;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Catagory catagory;
+    public Catagory getCatagory(){
+        return catagory;
+    }
 
     public int getId() {
         return id;

@@ -13,9 +13,9 @@ public class Catagory implements Serializable {
 
     @ApiModelProperty(value = "栏目Id")
     private int id;
-    @ApiModelProperty(value = "栏目编号", required = true)
+    @ApiModelProperty(value = "栏目编号")
     private long code;
-    @ApiModelProperty(value = "栏目名称",required = true)
+    @ApiModelProperty(value = "栏目名称")
     private String name;
 
     public int getId() {

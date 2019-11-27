@@ -23,7 +23,6 @@ public class CatagoryServiceImpl implements ICatagoryService {
         }
         catagorydao.save(catagory);
     }
-
     @Override
     public void deleteById(int id) throws CustomerException {
         catagorydao.deleteById(id);
