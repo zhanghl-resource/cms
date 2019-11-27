@@ -5,8 +5,10 @@ import com.briup.cms.service.IArticleService;
 import com.briup.cms.util.Message;
 import com.briup.cms.util.MessageUtil;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,5 +26,21 @@ public class ArticleController {
     public Message addArticle(Article article){
         articleService.addArticle(article);
         return MessageUtil.success();
+    }
+
+    @GetMapping("/delete")
+    @ApiOperation("根据id删除信息")
+    @ApiImplicitParam(value = "信息id",name = "id",paramType = "query",dataType = "int",required = true)
+    public Message deleteArticle(int id){
+        articleService.deleteById(id);
+        return MessageUtil.success();
+    }
+
+    @GetMapping("/findById")
+    @ApiOperation("根据id查询信息")
+    @ApiImplicitParam(value = "信息id",name = "id",paramType = "query",dataType = "int",required = true)
+    public Message<Article> findById(int id){
+        Article article = articleService.findById(id);
+        return MessageUtil.success(article);
     }
 }
