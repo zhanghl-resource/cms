@@ -1,6 +1,7 @@
 package com.briup.cms.service;
 
 import com.briup.cms.bean.Catagory;
+import com.briup.cms.bean.ex.CatagoryEX;
 import com.briup.cms.exception.CustomerException;
 
 import java.util.List;
@@ -11,4 +12,5 @@ public interface ICatagoryService {
     void deleteById(int id) throws CustomerException;
     Catagory findById(int id) throws CustomerException;
     List<Catagory> findAll() throws CustomerException;
+    List<CatagoryEX> findAllCatagoryEx() throws CustomerException;
 }

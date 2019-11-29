@@ -1,7 +1,9 @@
 package com.briup.cms.service.impl;
 
 import com.briup.cms.bean.Catagory;
+import com.briup.cms.bean.ex.CatagoryEX;
 import com.briup.cms.dao.ICatagorydao;
+import com.briup.cms.dao.ex.ICatagoryEXdao;
 import com.briup.cms.exception.CustomerException;
 import com.briup.cms.service.ICatagoryService;
 import com.briup.cms.util.CodeUtil;
@@ -15,6 +17,9 @@ public class CatagoryServiceImpl implements ICatagoryService {
 
     @Autowired
     private ICatagorydao catagorydao;
+
+    @Autowired
+    private ICatagoryEXdao catagoryEXdao;
     @Override
     public void saveOrUpdate(Catagory catagory) throws CustomerException {
         if (catagory == null){
@@ -35,5 +40,10 @@ public class CatagoryServiceImpl implements ICatagoryService {
     @Override
     public List<Catagory> findAll() throws CustomerException {
         return catagorydao.findAll();
+    }
+
+    @Override
+    public List<CatagoryEX> findAllCatagoryEx() throws CustomerException {
+        return catagoryEXdao.findAll();
     }
 }
